@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050b16">
+  <meta name="description" content="SWEB transforma ideas en sitios web, software a medida, aplicaciones y videojuegos. Soluciones digitales claras para negocios y creadores.">
+  <meta property="og:title" content="SWEB | Ideas que Conectan">
+  <meta property="og:description" content="Sitios web, software, aplicaciones y videojuegos diseñados para conectar ideas con personas.">
+  <meta property="og:type" content="website">
+  <title>SWEB | Ideas que Conectan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --night: #050b16;
+      --navy: #08111f;
+      --panel: #0c1628;
+      --blue: #00a2ff;
+      --blue-soft: #77caff;
+      --white: #fff;
+      --muted: #c9d3df;
+      --line: rgba(119, 202, 255, .18);
+      --content: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      background: var(--night);
+      color: var(--white);
+      font-family: 'Montserrat', Arial, sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    .wrap { width: min(var(--content), calc(100% - 44px)); margin-inline: auto; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(5, 11, 22, .92);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+    }
+    .nav-row { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { color: var(--white); font-weight: 800; font-size: 1.45rem; letter-spacing: -.06em; text-decoration: none; white-space: nowrap; }
+    .brand span { color: var(--blue); }
+    .nav-links { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px 24px; }
+    .nav-links a { color: var(--muted); font-size: .82rem; font-weight: 600; text-decoration: none; transition: color .2s ease; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--blue-soft); }
+    .nav-cta { padding: 10px 16px; border: 1px solid rgba(0,162,255,.6); border-radius: 8px; color: var(--white); font-size: .82rem; font-weight: 700; text-decoration: none; white-space: nowrap; }
+    .nav-cta:hover, .nav-cta:focus-visible { background: var(--blue); border-color: var(--blue); }
+
+    .hero {
+      position: relative;
+      min-height: 650px;
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      background:
+        radial-gradient(ellipse at 78% 48%, rgba(0, 162, 255, .16), transparent 34%),
+        linear-gradient(135deg, #050b16 10%, #071426 62%, #050b16 100%);
+    }
+    .hero::before, .hero::after { content: ''; position: absolute; pointer-events: none; border: 1px solid rgba(0,162,255,.16); border-radius: 50%; }
+    .hero::before { width: 640px; height: 640px; right: -80px; top: 20px; }
+    .hero::after { width: 480px; height: 480px; right: 0; top: 100px; border-color: rgba(0,162,255,.1); }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(280px, .88fr); align-items: center; gap: 42px; padding-block: 86px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--blue-soft); font-size: .76rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--blue); }
+    h1 { max-width: 760px; margin: 20px 0 18px; font-size: clamp(2.55rem, 5.3vw, 4.7rem); line-height: 1.08; letter-spacing: -.06em; }
+    h1 span { color: var(--blue); }
+    .hero-copy > p { max-width: 660px; margin: 0; color: var(--muted); font-size: clamp(1rem, 1.7vw, 1.15rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 20px; border: 1px solid transparent; border-radius: 8px; font-size: .86rem; font-weight: 700; text-decoration: none; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { color: #00111d; background: var(--blue); }
+    .button-primary:hover { background: #4dbaff; }
+    .button-secondary { color: var(--white); border-color: rgba(255,255,255,.24); background: rgba(255,255,255,.02); }
+    .button-secondary:hover { border-color: var(--blue); }
+    .hero-art { position: relative; display: grid; place-items: center; min-height: 360px; }
+    .orbit { position: absolute; width: min(100%, 370px); aspect-ratio: 1; border: 1px solid rgba(0,162,255,.22); border-radius: 50%; }
+    .orbit::before, .orbit::after { content: ''; position: absolute; border: 1px solid rgba(0,162,255,.13); border-radius: 50%; }
+    .orbit::before { inset: 12%; }
+    .orbit::after { inset: 25%; }
+    .product-card { position: relative; width: min(100%, 330px); padding: 24px; border: 1px solid rgba(119,202,255,.28); border-radius: 18px; background: linear-gradient(145deg, rgba(12,22,40,.96), rgba(8,17,31,.92)); box-shadow: 0 28px 90px rgba(0,0,0,.4); }
+    .product-top { display: flex; align-items: center; justify-content: space-between; padding-bottom: 17px; border-bottom: 1px solid var(--line); }
+    .product-mark { font-weight: 800; font-size: 1.12rem; letter-spacing: -.04em; }
+    .product-mark span { color: var(--blue); }
+    .product-dots { display: flex; gap: 5px; }
+    .product-dots i { width: 7px; height: 7px; border-radius: 50%; background: #34506a; }
+    .product-dots i:first-child { background: var(--blue); }
+    .product-label { margin: 22px 0 5px; color: #91a4b7; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; }
+    .product-title { margin: 0; font-size: 1.25rem; line-height: 1.3; }
+    .product-lines { display: grid; gap: 10px; margin-top: 24px; }
+    .product-line { height: 8px; border-radius: 8px; background: #1a2a3d; }
+    .product-line:nth-child(1) { width: 92%; background: linear-gradient(90deg, var(--blue), #234c6b); }
+    .product-line:nth-child(2) { width: 78%; }
+    .product-line:nth-child(3) { width: 58%; }
+    .product-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .product-chips span { padding: 6px 9px; border: 1px solid var(--line); border-radius: 20px; color: var(--blue-soft); font-size: .62rem; font-weight: 700; }
+
+    section { padding-block: 88px; }
+    .section-head { max-width: 720px; margin: 0 auto 42px; text-align: center; }
+    .section-head .eyebrow { justify-content: center; }
+    .section-head h2 { margin: 13px 0 12px; font-size: clamp(1.85rem, 3.5vw, 2.8rem); line-height: 1.18; letter-spacing: -.045em; }
+    .section-head p { margin: 0; color: var(--muted); }
+    .services { background: #07101d; }
+    .service-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .service-card { min-height: 220px; padding: 25px; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(145deg, rgba(12,22,40,.96), rgba(8,17,31,.96)); transition: transform .22s ease, border-color .22s ease; }
+    .service-card:hover { transform: translateY(-4px); border-color: rgba(0,162,255,.6); }
+    .service-number { display: inline-grid; place-items: center; width: 38px; height: 38px; border: 1px solid rgba(0,162,255,.38); border-radius: 10px; color: var(--blue-soft); font-size: .7rem; font-weight: 700; }
+    .service-card h3 { margin: 18px 0 8px; font-size: 1.08rem; }
+    .service-card p { margin: 0; color: var(--muted); font-size: .88rem; }
+    .service-note { max-width: 800px; margin: 24px auto 0; color: #9dafc0; font-size: .78rem; text-align: center; }
+
+    .about-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 56px; align-items: center; }
+    .about-panel { min-height: 320px; display: flex; flex-direction: column; justify-content: space-between; padding: 30px; border: 1px solid var(--line); border-radius: 16px; background: radial-gradient(circle at 82% 18%, rgba(0,162,255,.2), transparent 34%), var(--panel); }
+    .about-panel strong { color: var(--blue); font-size: clamp(2.5rem, 7vw, 5.2rem); line-height: 1; letter-spacing: -.08em; }
+    .about-panel span { max-width: 220px; color: var(--muted); font-size: .92rem; }
+    .about-text h2 { margin: 12px 0 15px; font-size: clamp(1.9rem, 3.6vw, 2.8rem); line-height: 1.18; letter-spacing: -.045em; }
+    .about-text p { color: var(--muted); }
+    .values { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .values span { padding: 8px 12px; border: 1px solid var(--line); border-radius: 40px; color: var(--blue-soft); font-size: .75rem; font-weight: 600; }
+
+    .process { background: #07101d; }
+    .process-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; counter-reset: step; }
+    .process-step { position: relative; padding: 23px 20px; border-top: 2px solid var(--blue); background: var(--panel); }
+    .process-step b { color: var(--blue-soft); font-size: .72rem; letter-spacing: .12em; }
+    .process-step h3 { margin: 15px 0 7px; font-size: 1rem; }
+    .process-step p { margin: 0; color: var(--muted); font-size: .82rem; }
+
+    .plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: stretch; }
+    .plan-card { padding: 26px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
+    .plan-card.featured { border-color: rgba(0,162,255,.75); box-shadow: 0 14px 55px rgba(0,162,255,.1); }
+    .plan-card h3 { margin: 0; color: var(--blue-soft); font-size: 1.05rem; }
+    .plan-price { margin: 14px 0 18px; font-size: 1.45rem; font-weight: 800; line-height: 1.2; }
+    .plan-card ul { margin: 0; padding-left: 19px; color: var(--muted); font-size: .84rem; }
+    .plan-card li + li { margin-top: 8px; }
+    .plans-note { margin: 20px auto 0; max-width: 850px; color: #9dafc0; font-size: .78rem; text-align: center; }
+
+    .contact { padding-block: 78px; background: linear-gradient(125deg, #07101d, #0a1b2c); }
+    .contact-card { display: grid; grid-template-columns: 1fr auto; gap: 35px; align-items: center; padding: 38px; border: 1px solid rgba(119,202,255,.25); border-radius: 18px; background: rgba(5,11,22,.42); }
+    .contact-card h2 { margin: 10px 0; font-size: clamp(1.8rem, 3.5vw, 2.65rem); line-height: 1.15; letter-spacing: -.045em; }
+    .contact-card p { margin: 0; color: var(--muted); }
+    .contact-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
+    .contact-details { display: flex; flex-wrap: wrap; gap: 16px 26px; margin-top: 23px; color: #b7c5d3; font-size: .84rem; }
+    .contact-details a { text-decoration-color: rgba(0,162,255,.5); text-underline-offset: 4px; }
+    footer { padding: 25px 0; background: var(--navy); color: #9dafc0; font-size: .78rem; }
+    .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .footer-row p { margin: 0; }
+    .footer-brand { color: var(--white); font-weight: 800; }
+    .footer-brand span { color: var(--blue); }
+    .whatsapp-float { position: fixed; z-index: 8; right: 22px; bottom: 22px; display: grid; place-items: center; width: 54px; height: 54px; border: 1px solid rgba(255,255,255,.18); border-radius: 50%; background: #158b4c; color: var(--white); box-shadow: 0 8px 26px rgba(0,0,0,.35); text-decoration: none; font-size: .68rem; font-weight: 800; transition: transform .2s ease; }
+    .whatsapp-float:hover { transform: translateY(-3px); }
+    :focus-visible { outline: 3px solid #8bd1ff; outline-offset: 3px; }
+
+    @media (max-width: 900px) {
+      .nav-row { padding-block: 12px; align-items: flex-start; flex-wrap: wrap; }
+      .nav-links { order: 3; width: 100%; justify-content: flex-start; gap: 8px 16px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 12px; }
+      .hero-art { min-height: 290px; }
+      .hero::before { top: auto; right: -120px; bottom: -240px; }
+      .hero::after { top: auto; right: -50px; bottom: -160px; }
+      .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .about-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 620px) {
+      .wrap { width: min(var(--content), calc(100% - 32px)); }
+      .nav-cta { padding: 8px 11px; font-size: .74rem; }
+      .nav-links a { font-size: .75rem; }
+      .hero { min-height: auto; }
+      .hero-grid { padding-block: 70px 48px; }
+      .hero-art { min-height: 270px; }
+      section { padding-block: 68px; }
+      .section-head { margin-bottom: 30px; }
+      .service-grid, .about-grid, .plans, .contact-card { grid-template-columns: 1fr; }
+      .service-card { min-height: auto; }
+      .about-panel { min-height: 230px; }
+      .process-grid { gap: 10px; }
+      .process-step { padding: 18px 15px; }
+      .contact-card { padding: 25px; }
+      .contact-actions { justify-content: flex-start; }
+      .footer-row { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav-row">
+      <a class="brand" href="#inicio" aria-label="SWEB, inicio"><span>S</span>WEB</a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#nosotros">SWEB</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#proceso">Cómo trabajamos</a>
+        <a href="#planes">Planes web</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a class="nav-cta" href="#contacto">Cuéntanos tu idea</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Ideas que conectan</span>
+          <h1>Tu idea puede convertirse en una <span>experiencia digital.</span></h1>
+          <p>Diseñamos y desarrollamos sitios web, software a medida, aplicaciones y videojuegos para negocios, profesionales y creadores.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://wa.me/573219092813" target="_blank" rel="noopener noreferrer">Hablemos de tu proyecto</a>
+            <a class="button button-secondary" href="#servicios">Explorar servicios</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit"></div>
+          <div class="product-card">
+            <div class="product-top">
+              <div class="product-mark"><span style="color:var(--blue)">S</span>WEB</div>
+              <div class="product-dots"><i></i><i></i><i></i></div>
+            </div>
+            <p class="product-label">De la idea a lo digital</p>
+            <h2 class="product-title">Una solución hecha para tu proyecto.</h2>
+            <div class="product-lines"><div class="product-line"></div><div class="product-line"></div><div class="product-line"></div></div>
+            <div class="product-chips"><span>WEB</span><span>SOFTWARE</span><span>APPS</span><span>JUEGOS</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="servicios">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Lo que hacemos</span>
+          <h2>Soluciones digitales para cada etapa de tu idea</h2>
+          <p>Definimos el alcance contigo y construimos una solución clara, funcional y adecuada a las necesidades de tu proyecto.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card">
+            <span class="service-number">01</span>
+            <h3>Sitios web</h3>
+            <p>Páginas empresariales, tiendas online y portafolios profesionales con diseño adaptable.</p>
+          </article>
+          <article class="service-card">
+            <span class="service-number">02</span>
+            <h3>Software a medida</h3>
+            <p>Programas informáticos, sistemas y herramientas digitales pensados para procesos específicos.</p>
+          </article>
+          <article class="service-card">
+            <span class="service-number">03</span>
+            <h3>Aplicaciones</h3>
+            <p>Aplicaciones web y móviles planificadas alrededor de las funciones y personas que las usarán.</p>
+          </article>
+          <article class="service-card">
+            <span class="service-number">04</span>
+            <h3>Videojuegos</h3>
+            <p>Desarrollo de videojuegos y experiencias interactivas, definidos según la idea y su plataforma.</p>
+          </article>
+          <article class="service-card">
+            <span class="service-number">05</span>
+            <h3>Tiendas y plataformas</h3>
+            <p>Catálogos, pedidos y funciones digitales que ayudan a presentar productos y servicios.</p>
+          </article>
+          <article class="service-card">
+            <span class="service-number">06</span>
+            <h3>Mantenimiento y mejoras</h3>
+            <p>Actualizaciones, soporte y mejoras acordadas para acompañar la evolución de cada solución.</p>
+          </article>
+        </div>
+        <p class="service-note">Cada proyecto se cotiza según sus funcionalidades, plataforma, tiempos, integraciones y servicios externos requeridos.</p>
+      </div>
+    </section>
+
+    <section id="nosotros">
+      <div class="wrap about-grid">
+        <div class="about-panel" aria-label="SWEB: ideas que conectan">
+          <strong>SWEB</strong>
+          <span>Desarrollo web, software, aplicaciones y videojuegos.</span>
+        </div>
+        <div class="about-text">
+          <span class="eyebrow">Quiénes somos</span>
+          <h2>Conectamos ideas con tecnología útil.</h2>
+          <p>SWEB es un estudio digital que acompaña a emprendedores, empresas, profesionales y creadores desde la idea hasta una solución digital funcional. Hablamos claro, definimos el alcance y trabajamos cada proyecto con atención a su propósito.</p>
+          <div class="values" aria-label="Valores de SWEB">
+            <span>Innovación</span><span>Claridad</span><span>Calidad</span><span>Cercanía</span><span>Mejora continua</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="proceso">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Nuestro proceso</span>
+          <h2>Un camino claro de principio a fin</h2>
+          <p>El proceso y los entregables se ajustan a cada tipo de proyecto.</p>
+        </div>
+        <div class="process-grid">
+          <article class="process-step"><b>01 / DESCUBRIR</b><h3>Escuchamos</h3><p>Entendemos objetivos, usuarios, necesidades y recursos disponibles.</p></article>
+          <article class="process-step"><b>02 / PLANEAR</b><h3>Definimos</h3><p>Acordamos alcance, funciones, entregas, tiempos y presupuesto.</p></article>
+          <article class="process-step"><b>03 / CONSTRUIR</b><h3>Desarrollamos</h3><p>Diseñamos, programamos y revisamos la solución según lo acordado.</p></article>
+          <article class="process-step"><b>04 / ACOMPAÑAR</b><h3>Entregamos</h3><p>Presentamos el proyecto y conversamos sobre soporte y siguientes mejoras.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="planes">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Sitios web</span>
+          <h2>Planes de referencia para proyectos web</h2>
+          <p>Elegimos el alcance contigo y preparamos una cotización clara antes de comenzar.</p>
+        </div>
+        <div class="plans">
+          <article class="plan-card">
+            <h3>Básico</h3>
+            <p class="plan-price">$100.000–$150.000 COP</p>
+            <ul><li>Página informativa</li><li>Diseño adaptable</li><li>Botón de contacto o red social</li></ul>
+          </article>
+          <article class="plan-card featured">
+            <h3>Profesional</h3>
+            <p class="plan-price">$200.000–$250.000 COP</p>
+            <ul><li>Varias secciones</li><li>Formulario de contacto</li><li>SEO básico</li><li>Dominio y alojamiento según cotización</li></ul>
+          </article>
+          <article class="plan-card">
+            <h3>Premium</h3>
+            <p class="plan-price">Desde $350.000 COP</p>
+            <ul><li>Tienda online</li><li>Funciones avanzadas</li><li>Panel administrativo según alcance</li><li>SEO según proyecto</li></ul>
+          </article>
+        </div>
+        <p class="plans-note">Estos valores corresponden a las referencias web del sitio suministrado y deben confirmarse en cada cotización. El desarrollo de software, aplicaciones y videojuegos se cotiza a medida. Dominio, alojamiento, licencias e integraciones pueden tener costos aparte.</p>
+      </div>
+    </section>
+
+    <section class="contact" id="contacto">
+      <div class="wrap contact-card">
+        <div>
+          <span class="eyebrow">Cuéntanos tu idea</span>
+          <h2>¿Qué te gustaría crear?</h2>
+          <p>Conversemos sobre tus objetivos y encontraremos el siguiente paso para tu proyecto digital.</p>
+          <div class="contact-details">
+            <a href="mailto:dylanandresruizbrinez@gmail.com">dylanandresruizbrinez@gmail.com</a>
+            <a href="tel:+573219092813">+57 321 909 2813</a>
+          </div>
+        </div>
+        <div class="contact-actions">
+          <a class="button button-primary" href="https://wa.me/573219092813" target="_blank" rel="noopener noreferrer">Escribir por WhatsApp</a>
+          <a class="button button-secondary" href="https://www.instagram.com/sweb_oficial/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <p><span class="footer-brand"><span>S</span>WEB</span> · Ideas que Conectan</p>
+      <p>© 2026 SWEB. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/573219092813" target="_blank" rel="noopener noreferrer" aria-label="Escribir a SWEB por WhatsApp">WA</a>
+</body>
+</html>
